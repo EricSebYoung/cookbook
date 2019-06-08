@@ -1,0 +1,13 @@
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\bin\Debug\netstandard2.0\CookBookApp.deps.json
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\bin\Debug\netstandard2.0\CookBookApp.dll
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\bin\Debug\netstandard2.0\CookBookApp.pdb
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.csprojAssemblyReference.cache
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.csproj.CoreCompileInputs.cache
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.AssemblyInfoInputs.cache
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.AssemblyInfo.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.dll
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.pdb
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\AddCategory.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\XamlC.stamp
