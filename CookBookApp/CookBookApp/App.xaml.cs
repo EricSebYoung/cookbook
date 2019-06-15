@@ -61,7 +61,7 @@ namespace CookBookApp
             }
         }
 
-        public int ResumeAtCategoryId { get; set; }
+        public int ResumeAtId { get; set; }
     }
 }
 

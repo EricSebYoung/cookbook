@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
 
@@ -34,6 +35,13 @@ namespace CookBookApp
         public Task<List<Recipes>> GetRecipes(int categoryId)
         {
             return database.QueryAsync<Recipes>("SELECT * FROM [Recipes] WHERE [categoryId] = " + categoryId);
+        }
+
+        public int GetRecentRecipeID()
+        {
+            int result = database.QueryAsync<Recipes>("SELECT [recipeId] FROM [Recipes] ORDER BY [recipeId] DESC limit 1").Result.FirstOrDefault().recipeId;
+
+            return result;
         }
 
         public Task<List<Ingredients>> GetIngredients(int recipeId)

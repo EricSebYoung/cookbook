@@ -26,7 +26,7 @@ namespace CookBookApp
         public int ingredientId { get; set; }
         public string ingredientName { get; set; }
         public int ingredientAmou { get; set; }
-        public string incredientMeas { get; set; }
+        public string ingredientMeas { get; set; }
         public int recipeId { get; set; }
     }
 }

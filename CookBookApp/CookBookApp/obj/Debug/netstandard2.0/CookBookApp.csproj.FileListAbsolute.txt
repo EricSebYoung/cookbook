@@ -11,3 +11,7 @@ C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Deb
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\CookBookApp.pdb
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\AddCategory.xaml.g.cs
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\ViewRecipes.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\AddRecipe.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\Templates\IngredientTemplate.xaml.g.cs
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Debug\netstandard2.0\ShowRecipe.xaml.g.cs

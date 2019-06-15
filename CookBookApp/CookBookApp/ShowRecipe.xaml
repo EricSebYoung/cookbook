@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookBookApp.ShowRecipe">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding recipeImage}"
+                    HorizontalOptions="CenterAndExpand" />
+                <Label Text="Ingredients" FontAttributes="Bold" TextDecorations="Underline"/>
+                <StackLayout x:Name="Ingredients">
+                    <!-- Defined Dynamically in code behind -->
+                </StackLayout>
+                <Label Text="(Click + to Add to Shopping List)"/>
+                <Label Text="Directions" FontAttributes="Bold" TextDecorations="Underline"/>
+                <Label Text="{Binding recipeDirections}" />
+                <Button Text="Share This Recipe" Clicked="OnShareClicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

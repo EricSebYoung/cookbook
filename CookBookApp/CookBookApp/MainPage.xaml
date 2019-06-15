@@ -19,5 +19,10 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
+        <ListView.Footer>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add a Category" Clicked="OnItemAdded" />
+            </StackLayout>
+        </ListView.Footer>
     </ListView>
 </ContentPage>
