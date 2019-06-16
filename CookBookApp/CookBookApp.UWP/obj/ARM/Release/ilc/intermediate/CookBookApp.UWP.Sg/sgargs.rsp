@@ -1,0 +1,12 @@
+﻿/ref:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"C:\Users\erics\.nuget\packages\runtime.win10-arm.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc"
+/ref:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\in\\"
+/ref:"C:\Users\erics\.nuget\packages\runtime.win10-arm.microsoft.net.native.compiler\2.1.8\tools\ARM\ilc\lib\Private\\"
+/ref:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\in"
+/ref:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\in\WinMetadata"
+/ca:System.Private.CoreLib
+/cscpath:"C:\Users\erics\.nuget\packages\microsoft.net.native.compiler\2.1.8\tools\csc"
+/out:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\intermediate\SgGenerated\\"
+/int:"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\intermediate\CookBookApp.UWP.Sg"
+"@C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\ARM\Release\ilc\intermediate\CookBookApp.UWP.Sg\ComputedSerializationInput.txt"

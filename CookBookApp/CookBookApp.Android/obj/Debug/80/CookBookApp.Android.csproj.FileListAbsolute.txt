@@ -103,6 +103,7 @@ C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\obj\Debug\80\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\obj\Debug\80\android\assets\Xamarin.Forms.Xaml.pdb
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\obj\Debug\80\res\drawable\plus.png
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\obj\Debug\80\res\drawable\list.png
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\bin\Debug\netstandard2.0\CookBookApp.dll
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\bin\Debug\CookBookApp.dll.mdb
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.Android\obj\Debug\80\linksrc\CookBookApp.dll.mdb

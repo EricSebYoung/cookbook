@@ -1,0 +1,4 @@
+MainPackage=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\bin\x86\Release\CookBookApp.UWP_0.0.1.0_x86.appx
+SymbolPackage=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\AppPackages\CookBookApp.UWP_0.0.1.0_Test\CookBookApp.UWP_0.0.1.0_x86.appxsym
+ResourcePack=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\bin\x86\Release\CookBookApp.UWP_0.0.1.0_scale-100.appx
+ResourcePack=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\bin\x86\Release\CookBookApp.UWP_0.0.1.0_scale-400.appx

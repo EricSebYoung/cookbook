@@ -1,0 +1,2 @@
+MainPackage=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\bin\x64\Release\CookBookApp.UWP_0.0.1.0_x64.appx
+SymbolPackage=C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\AppPackages\CookBookApp.UWP_0.0.1.0_Test\CookBookApp.UWP_0.0.1.0_x64.appxsym

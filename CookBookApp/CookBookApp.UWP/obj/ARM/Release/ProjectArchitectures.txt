@@ -1,0 +1,1 @@
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\CookBookApp.UWP.csproj;arm
