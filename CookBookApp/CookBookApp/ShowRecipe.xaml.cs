@@ -27,20 +27,27 @@ namespace CookBookApp
 
             // Reset the 'resume' id, since we just want to re-start here
             ((App)App.Current).ResumeAtId = -1;
-            foreach(Ingredients ingredient in await App.Database.GetIngredients(RecipeID))
+            int ingredientCount = Ingredients.Children.Count();
+            if (ingredientCount == 0)
             {
-                StackLayout IngRow = new StackLayout { Spacing = 4, Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.Start };
-                Ingredients.Children.Add(IngRow);
-                IngRow.Children.Add(new Label { Text = ingredient.ingredientAmou.ToString(), VerticalTextAlignment = TextAlignment.Center});
-                IngRow.Children.Add(new Label { Text = ingredient.ingredientMeas, FontAttributes = FontAttributes.Bold, VerticalTextAlignment = TextAlignment.Center });
-                IngRow.Children.Add(new Label { Text = ingredient.ingredientName, TextDecorations = TextDecorations.Underline, VerticalTextAlignment = TextAlignment.Center });
-                Button addToList = new Button { Text = "+",
-                    Command = new Command(() => {
-                        // click handler
-                        AddToList(ingredient.ingredientName, ingredient.ingredientAmou, ingredient.ingredientMeas);
-                    }), 
-                };
-                IngRow.Children.Add(addToList);
+                foreach (Ingredients ingredient in await App.Database.GetIngredients(RecipeID))
+                {
+                    StackLayout IngRow = new StackLayout { Spacing = 4, Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.Start };
+                    Ingredients.Children.Add(IngRow);
+                    IngRow.Children.Add(new Label { Text = ingredient.ingredientAmou.ToString(), VerticalTextAlignment = TextAlignment.Center });
+                    IngRow.Children.Add(new Label { Text = ingredient.ingredientMeas, FontAttributes = FontAttributes.Bold, VerticalTextAlignment = TextAlignment.Center });
+                    IngRow.Children.Add(new Label { Text = ingredient.ingredientName, TextDecorations = TextDecorations.Underline, VerticalTextAlignment = TextAlignment.Center });
+                    Button addToList = new Button
+                    {
+                        Text = "+",
+                        Command = new Command(() =>
+                        {
+                            // click handler
+                            AddToList(ingredient.ingredientName, ingredient.ingredientAmou, ingredient.ingredientMeas);
+                        }),
+                    };
+                    IngRow.Children.Add(addToList);
+                }
             }
         }
 
