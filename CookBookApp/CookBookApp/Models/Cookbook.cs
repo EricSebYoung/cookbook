@@ -29,4 +29,14 @@ namespace CookBookApp
         public string ingredientMeas { get; set; }
         public int recipeId { get; set; }
     }
+
+    public class ShoppingListItems
+    {
+        [PrimaryKey, AutoIncrement]
+        public int itemId { get; set; }
+        public string itemName { get; set; }
+        public int itemAmou { get; set; }
+        public string itemMeas { get; set; }
+        public bool itemChecked { get; set; }
+    }
 }

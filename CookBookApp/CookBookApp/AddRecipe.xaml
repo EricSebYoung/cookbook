@@ -9,7 +9,7 @@
             </StackLayout>
             <StackLayout Spacing="0" Orientation="Horizontal" HorizontalOptions="Start">
                 <Button Text="+ Ingredient" Clicked="OnItemAdded" />
-                <Button Text="- Ingredient" Clicked="OnItemRemoved" />
+                <Button Text="- Ingredient" Clicked="OnItemRemoved" x:Name="removeIngredient" />
             </StackLayout>
             <Label Text="Directions" />
             <Editor Text="{Binding recipeDirections}" AutoSize="TextChanges"/>

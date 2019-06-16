@@ -31,6 +31,13 @@ namespace CookBookApp
             });
         }
 
+        async void OnShoppingList(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ShoppingList()
+            {
+            });
+        }
+
         async void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             ((App)App.Current).ResumeAtId = (e.SelectedItem as Categories).categoryId;

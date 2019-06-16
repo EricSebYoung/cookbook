@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Nexus_5_API_23_x86</SelectedDevice>
     <DefaultDevice>Nexus_5_API_23_x86</DefaultDevice>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault.NoActionBar.Fullscreen</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

@@ -37,10 +37,30 @@ namespace CookBookApp
                 Button addToList = new Button { Text = "+",
                     Command = new Command(() => {
                         // click handler
-                    })
+                        AddToList(ingredient.ingredientName, ingredient.ingredientAmou, ingredient.ingredientMeas);
+                    }), 
                 };
                 IngRow.Children.Add(addToList);
             }
+        }
+
+        async void AddToList(string ItemName, int ItemAmou, string ItemMeas)
+        {
+            ShoppingListItems item = new ShoppingListItems();
+            item.itemName = ItemName;
+            item.itemAmou = ItemAmou;
+            item.itemMeas = ItemMeas;
+            item.itemChecked = false;
+            await App.Database.SaveShoppingListAsync(item);
+
+            await DisplayAlert("Item Added", "You have added " + ItemName + " to the shopping list.", "OK");
+        }
+
+        async void OnShoppingList(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ShoppingList()
+            {
+            });
         }
 
         async void OnShareClicked(object sender, SelectedItemChangedEventArgs e)

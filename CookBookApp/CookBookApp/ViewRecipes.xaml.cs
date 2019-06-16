@@ -49,5 +49,12 @@ namespace CookBookApp
                 });
             }
         }
+
+        async void OnShoppingList(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ShoppingList()
+            {
+            });
+        }
     }
 }

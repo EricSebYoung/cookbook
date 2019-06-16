@@ -13,21 +13,31 @@ namespace CookBookApp
 	public partial class AddRecipe : ContentPage
 	{
         int CategoryID = 0;
+        public AddRecipe ()
+        {
+            InitializeComponent();
+        }
+
 		public AddRecipe (int categoryID)
 		{
-			InitializeComponent ();
+            InitializeComponent();
             CategoryID = categoryID;
             Ingredients.Children.Add(new IngredientTemplate() { BindingContext = new Ingredients() });
         }
 
-        async void OnItemAdded(object sender, EventArgs e)
+        void OnItemAdded(object sender, EventArgs e)
         {
             Ingredients.Children.Add(new IngredientTemplate() { BindingContext = new Ingredients() });
+            removeIngredient.IsVisible = true;
         }
 
-        async void OnItemRemoved(object sender, EventArgs e)
+        void OnItemRemoved(object sender, EventArgs e)
         {
             Ingredients.Children.RemoveAt(Ingredients.Children.Count-1);
+            if (Ingredients.Children.Count == 0)
+            {
+                removeIngredient.IsVisible = false;
+            }
         }
 
         async void OnSaveClicked(object sender, EventArgs e)

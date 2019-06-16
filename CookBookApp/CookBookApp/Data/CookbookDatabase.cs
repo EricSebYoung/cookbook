@@ -15,6 +15,7 @@ namespace CookBookApp
             database.CreateTableAsync<Categories>().Wait();
             database.CreateTableAsync<Recipes>().Wait();
             database.CreateTableAsync<Ingredients>().Wait();
+            database.CreateTableAsync<ShoppingListItems>().Wait();
         }
 
         public Task<List<Categories>> GetCategories()
@@ -47,6 +48,11 @@ namespace CookBookApp
         public Task<List<Ingredients>> GetIngredients(int recipeId)
         {
             return database.QueryAsync<Ingredients>("SELECT * FROM [Ingredients] WHERE [recipeId] = " + recipeId);
+        }
+
+        public Task<List<ShoppingListItems>> GetList()
+        {
+            return database.QueryAsync<ShoppingListItems>("SELECT * FROM [ShoppingListItems]");
         }
 
         public Task<int> SaveCategoryAsync(Categories item)
@@ -85,7 +91,27 @@ namespace CookBookApp
             }
         }
 
-        public Task<int> DeleteCategoryAsync(Categories item)
+        public Task<int> SaveShoppingListAsync(ShoppingListItems item)
+        {
+            if (item.itemId != 0)
+            {
+                return database.UpdateAsync(item);
+            }
+            else
+            {
+                ShoppingListItems existingItem = database.QueryAsync<ShoppingListItems>("SELECT * FROM [ShoppingListItems] WHERE [itemName] = '" + item.itemName
+                    + "' AND [itemMeas] = '" + item.itemMeas + "'").Result.FirstOrDefault();
+                if (existingItem != null)
+                {
+                    item.itemAmou = item.itemAmou + existingItem.itemAmou;
+                    DeleteShoppingListAsync(existingItem);
+                }
+
+                return database.InsertAsync(item);             
+            }
+        }
+
+            public Task<int> DeleteCategoryAsync(Categories item)
         {
             return database.DeleteAsync(item);
         }
@@ -96,6 +122,16 @@ namespace CookBookApp
         }
 
         public Task<int> DeleteIngredientAsync(Ingredients item)
+        {
+            return database.DeleteAsync(item);
+        }
+
+        public Task<int> DeleteShoppingListAsync()
+        {
+            return database.ExecuteAsync("DELETE FROM[ShoppingListItems] WHERE [itemChecked] = 1");
+        }
+
+        public Task<int> DeleteShoppingListAsync(ShoppingListItems item)
         {
             return database.DeleteAsync(item);
         }
