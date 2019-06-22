@@ -46,16 +46,15 @@ namespace CookBookApp
                 if (database == null)
                 {
                     database = new CookbookDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CookbookSQLite.db3"));
-                    if (!database.CategoryExists())
-                    {
-                        string unsortedName = "Unsorted";
-                        string unsortedImage = "none";
-                        var unsortedCat = new Categories();
-                        unsortedCat.categoryName = unsortedName;
-                        unsortedCat.categoryImage = unsortedImage;
+                }
+                if (!database.CategoryExists())
+                {
+                    string unsortedName = "Unsorted";
+                    var unsortedCat = new Categories();
+                    unsortedCat.categoryName = unsortedName;
+                    unsortedCat.categoryImage = null;
 
-                        database.SaveCategoryAsync(unsortedCat);
-                    }
+                    database.SaveCategoryAsync(unsortedCat);
                 }
                 return database;
             }

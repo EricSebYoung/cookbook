@@ -13,6 +13,6 @@ C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Rel
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\CookBookApp.csproj.CoreCompileInputs.cache
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\CookBookApp.AssemblyInfoInputs.cache
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\CookBookApp.AssemblyInfo.cs
-C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\CookBookApp.dll
 C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\CookBookApp.pdb
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp\obj\Release\netstandard2.0\XamlC.stamp

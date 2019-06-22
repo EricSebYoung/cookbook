@@ -5,6 +5,8 @@
 [Files]
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\filemap.pri"			"resources.pri"
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\plus.png"			"plus.png"
+"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\Microsoft.Graphics.Canvas.winmd"			"Microsoft.Graphics.Canvas.winmd"
+"C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\Microsoft.Graphics.Canvas.dll"			"Microsoft.Graphics.Canvas.dll"
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\list.png"			"list.png"
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\e_sqlite3.dll"			"e_sqlite3.dll"
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\PackageLayout\CookBookApp.UWP.exe"			"CookBookApp.UWP.exe"

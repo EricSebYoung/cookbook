@@ -1,1 +1,1 @@
-C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\AppPackages\CookBookApp.UWP_0.0.1.0_Test\CookBookApp.UWP_0.0.1.0_x86.appxbundle
+C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\AppPackages\CookBookApp.UWP_0.0.2.0_Test\CookBookApp.UWP_0.0.2.0_x86.appxbundle

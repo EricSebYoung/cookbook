@@ -14,7 +14,11 @@
             <Label Text="Directions" />
             <Editor Text="{Binding recipeDirections}" AutoSize="TextChanges"/>
             <Label Text="Image" />
-            <Entry Text="{Binding recipeImage}" />
+            <Button Text="Choose a File..." Clicked="OnImageClicked"></Button>
+            <Label Text="" x:Name="ImageFile"/>
+            <StackLayout x:Name="ShowImage">
+                <!-- Defined Dynamically in code behind -->
+            </StackLayout>
             <Button Text="Save" Clicked="OnSaveClicked" />
         </StackLayout>
     </ScrollView>

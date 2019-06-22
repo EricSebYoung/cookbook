@@ -3,7 +3,7 @@
 "/runtime:mrt100_app"
 /eh:clr
 /pdb
-"/nativeLink:C:\Users\erics\.nuget\packages\runtime.win10-x86.microsoft.net.native.compiler\2.1.8\tools\x86\ilc\lib\Native\vmath.lib"
+"/nativeLink:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.compiler\2.2.3\tools\x86\ilc\lib\Native\vmath.lib"
 /customImports
 /methodBodyFolding
 "C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\ilc\intermediate\MDIL\CookBookApp.UWP.mdilexe"
@@ -11,6 +11,7 @@
 "/out:C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\ilc\intermediate\Native\CookBookApp.UWP.exe"
 "/pdbAltPath:C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\bin\x86\Release\ilc"
 "/res:C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\ilc\intermediate\Native.res"
-"/i:C:\Users\erics\.nuget\packages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\MDIL"
+"/i:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.2.3\tools\SharedLibrary\ret\MDIL"
 /shimexe
 "/classlib:SharedLibrary"
+"/sourcelink:C:\Users\erics\Source\Repos\SCSUSoftwareAnalysis\CookBookApp\CookBookApp.UWP\obj\x86\Release\ilc\intermediate\ILTransformed\Xamarin.Essentials.srclink"

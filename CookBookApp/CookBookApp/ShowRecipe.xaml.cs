@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+using System.IO;
 
 namespace CookBookApp
 {
@@ -49,6 +51,8 @@ namespace CookBookApp
                     IngRow.Children.Add(addToList);
                 }
             }
+            var recipe = (Recipes)BindingContext;
+            RecipeImage.Source = ImageSource.FromStream(() => new MemoryStream(recipe.recipeImage));
         }
 
         async void AddToList(string ItemName, int ItemAmou, string ItemMeas)
@@ -70,9 +74,23 @@ namespace CookBookApp
             });
         }
 
-        async void OnShareClicked(object sender, SelectedItemChangedEventArgs e)
+        async void OnShareClicked(object sender, EventArgs e)
         {
-         
+            var recipe = (Recipes)BindingContext;
+            string text = "";
+            text += "Ingredients: " + "\n";
+            foreach (Ingredients ingredient in await App.Database.GetIngredients(RecipeID))
+            {
+                text += ingredient.ingredientAmou + " " + ingredient.ingredientMeas + " " + ingredient.ingredientName + "\n";
+            }
+
+            text += "Directions: " + "\n" + recipe.recipeDirections;
+
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Title = recipe.recipeName,
+                Text = text
+            });
         }
     }
 }

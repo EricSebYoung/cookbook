@@ -26,7 +26,7 @@ namespace CookBookApp
         public bool CategoryExists()
         {
             bool exists = false;
-            if (database.QueryAsync<Categories>("SELECT * FROM [Categories]") != null)
+            if (database.QueryAsync<Categories>("SELECT * FROM [Categories]").Result.FirstOrDefault() != null)
             {
                 exists = true;
             }
@@ -113,6 +113,7 @@ namespace CookBookApp
 
             public Task<int> DeleteCategoryAsync(Categories item)
         {
+            database.ExecuteAsync("UPDATE [Recipes] SET [categoryId] = 1 WHERE [categoryId] = " + item.categoryId);
             return database.DeleteAsync(item);
         }
 

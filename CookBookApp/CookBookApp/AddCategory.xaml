@@ -4,7 +4,11 @@
         <Label Text="Name" />
         <Entry Text="{Binding categoryName}" />
         <Label Text="Image" />
-        <Entry Text="{Binding categoryImage}" />
+        <Button Text="Choose a File..." Clicked="OnImageClicked"></Button>
+        <Label Text="" x:Name="ImageFile"/>
+        <StackLayout x:Name="ShowImage">
+            <!-- Defined Dynamically in code behind -->
+        </StackLayout>
         <Button Text="Save" Clicked="OnSaveClicked" />
     </StackLayout>
 </ContentPage>

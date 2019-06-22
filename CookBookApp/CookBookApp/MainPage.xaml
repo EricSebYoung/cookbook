@@ -1,35 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CookBookApp.MainPage" Title="Your Cookbook">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="[=]"  Clicked="OnShoppingList">
+        <ToolbarItem Text="Check Shopping List" Order="Secondary" Clicked="OnShoppingList">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android, UWP," Value="list.png" />
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
-        <ToolbarItem Text="+"  Clicked="OnItemAdded">
+        <ToolbarItem Text="Add Category" Clicked="OnItemAdded">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android, UWP" Value="plus.png" />
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
+        <ToolbarItem Text ="Edit Category" Order="Secondary" Clicked="OnItemEdit" x:Name="EditTool"/>
+        <ToolbarItem Text ="Delete Category" Order="Secondary" Clicked="OnItemDelete" x:Name="DeleteTool"/>
+
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnListItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding categoryName}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        <ListView.Footer>
-            <StackLayout Orientation="Horizontal">
-                <Button Text="Add a Category" Clicked="OnItemAdded" />
-            </StackLayout>
-        </ListView.Footer>
-    </ListView>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Select Items to Delete" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" x:Name="DeleteLabel"/>
+            <Label Text="Select Items to Edit" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" x:Name="EditLabel"/>
+            <FlexLayout x:Name="CategoriesView" Wrap="Wrap" JustifyContent="Start" AlignItems="Center" AlignContent="Start">
+            </FlexLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

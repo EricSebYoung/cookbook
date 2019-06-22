@@ -1229,6 +1229,686 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 	    #endregion Helpers
 	}
 
+	public static class IMapViewSharedReferenceTypesRCWAdapter 
+	{
+	    // int Count { get }
+	    public static int Count_Get<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this)
+	    {
+	        uint size = IMapViewSharedReferenceTypesStubClass.get_Size(_this);
+
+	        if (((uint)System.Int32.MaxValue) < size)
+	        {
+	            throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_CollectionBackingListTooLarge));
+	        }
+
+	        return (int)size;
+	    }
+
+	    // TValue this[K key] { get }
+	    public static TValue Indexer_Get<TKey, TValue>(
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
+	        TKey key)
+	    {
+	        if ((object)key == null)
+	            throw new global::System.ArgumentNullException("key");
+
+
+	        return Lookup(_this, key);
+	    }
+
+	    // IEnumerable<TKey> Keys { get }
+	    public static global::System.Collections.Generic.IEnumerable<TKey> Keys<TKey, TValue>(
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this
+	        )
+	    {
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> roDictionary = (System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>)_this;
+	        return new global::System.Runtime.InteropServices.WindowsRuntime.ReadOnlyDictionaryKeyCollection<TKey, TValue>(roDictionary);
+	    }
+
+	    // IEnumerable<TValue> Values { get }
+	    public static global::System.Collections.Generic.IEnumerable<TValue> Values<TKey, TValue>(
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this
+	        )
+	    {
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> roDictionary = (System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>)_this;
+	        return new global::System.Runtime.InteropServices.WindowsRuntime.ReadOnlyDictionaryValueCollection<TKey, TValue>(roDictionary);
+	    }
+
+	    // bool ContainsKey(K key)
+	    public static bool ContainsKey<TKey, TValue>(
+	       global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
+	        TKey key)
+	    {
+	        if ((object)key == null)
+	            throw new global::System.ArgumentNullException("key");
+
+	        return IMapViewSharedReferenceTypesStubClass.HasKey(_this, key);
+	    }
+
+	    // bool TryGetValue(TKey key, out TValue value)
+	    public static bool TryGetValue<TKey, TValue>(
+	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
+	        TKey key, 
+	        out TValue value)
+	    {
+	        if ((object)key == null)
+	            throw new global::System.ArgumentNullException("key");
+
+	        // It may be faster to call HasKey then Lookup.  On failure, we would otherwise
+	        // throw an exception from Lookup.
+	        if (!IMapViewSharedReferenceTypesStubClass.HasKey(_this, key))
+	        {
+	            value = default(TValue);
+	            return false;
+	        }
+
+	        try
+	        {
+	            value = IMapViewSharedReferenceTypesStubClass.Lookup(_this, key);
+	            return true;
+	        }
+	        catch (System.Exception ex)  // Still may hit this case due to a race, or a potential bug.
+	        {
+	            if (global::__Interop.McgHelpers.__HResults.E_BOUNDS == ex.HResult)
+	            {
+	                value = default(TValue);
+	                return false;
+	            }
+	            throw;
+	        }
+	    }
+
+	    #region Helpers
+
+	    private static TValue Lookup<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this, TKey key)
+	    {
+	        //Contract.Requires(null != key);
+
+	        try
+	        {
+	            return IMapViewSharedReferenceTypesStubClass.Lookup(_this, key);
+	        }
+	        catch (System.Exception ex)
+	        {
+	            if (global::__Interop.McgHelpers.__HResults.E_BOUNDS == ex.HResult)
+	                throw new global::System.Collections.Generic.KeyNotFoundException("key");
+	            throw;
+	        }
+	    }
+
+	    #endregion Helpers
+	}
+
+	public static unsafe class IMapViewSharedReferenceTypesStubClass
+	{
+	    internal const int idx_Lookup = 6;
+	    internal const int idx_get_Size = 7;
+	    internal const int idx_HasKey = 8;
+
+	    [global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+	    public static TValue Lookup<TKey, TValue>(
+	                global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
+	                TKey key)
+	    {
+	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
+	            (global::System.__ComObject)_this,
+	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
+	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_Lookup];
+	        global::System.IntPtr unsafeKey = global::System.IntPtr.Zero;
+	        global::System.IntPtr unsafeValue = global::System.IntPtr.Zero;
+
+	        try
+	        {
+	            unsafeKey = global::System.Runtime.InteropServices.McgMarshal.ObjectToComInterface(key, typeof(TKey).TypeHandle);
+	            int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)unsafeKey, (void*)&unsafeValue);
+	            global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
+	            global::System.GC.KeepAlive(_this);
+
+	            if (result < 0)
+	            {
+	                throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
+	            }
+
+	            return (TValue)global::System.Runtime.InteropServices.McgMarshal.ComInterfaceToObject(unsafeValue, typeof(TValue).TypeHandle);
+	        }
+	        finally
+	        {
+	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TKey>(unsafeKey);
+	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TValue>(unsafeValue);
+	        }
+	    }
+
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+	    public static uint get_Size<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this)
+	    {
+	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
+	            (global::System.__ComObject)_this,
+	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
+	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_get_Size];
+	        uint unsafeSize;
+
+	        int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)&unsafeSize);
+	        global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
+	        global::System.GC.KeepAlive(_this);
+
+	        if (result < 0)
+	        {
+	            throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
+	        }
+
+	        return unsafeSize;
+	    }
+
+		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
+	    public static bool HasKey<TKey, TValue>(
+	                global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
+	                TKey key)
+	    {
+	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
+	            (global::System.__ComObject)_this,
+	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
+	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_HasKey];
+	        global::System.IntPtr unsafeKey = global::System.IntPtr.Zero;
+	        bool retVal;
+	        sbyte unsafeRetVal;
+
+	        try
+	        {
+	            unsafeKey = global::System.Runtime.InteropServices.McgMarshal.ObjectToComInterface(key, typeof(TKey).TypeHandle);
+	            int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)unsafeKey, (void*)&unsafeRetVal);
+	            global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
+	            global::System.GC.KeepAlive(_this);
+
+	            if (result < 0)
+	            {
+	                throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
+	            }
+
+	            retVal = unsafeRetVal != 0;
+	        }
+	        finally
+	        {
+	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TKey>(unsafeKey);
+	        }
+
+	        return retVal;
+	    }
+
+	}
+
+	public static class IMapView_CCWAdapter 
+	{
+	    // V Lookup(K key)
+	    public static V Lookup<K, V>(global::System.Collections.Generic.IReadOnlyDictionary<K,V> _this, K key)
+	    {
+	        try
+	        {
+	            return _this[key];
+	        }
+	        catch (global::System.Collections.Generic.KeyNotFoundException ex)
+	        {
+	            // Change error code to match what WinRT expects
+	            McgMarshal.SetExceptionErrorCode(ex, global::__Interop.McgHelpers.__HResults.E_BOUNDS);
+	            throw;
+	        }
+	    }
+
+	    // uint Size { get }
+	    public static uint get_Size<K,V>(global::System.Collections.Generic.IReadOnlyDictionary<K, V> _this)
+	    {
+	        return (uint)_this.Count;
+	    }
+
+	    // bool HasKey(K key)
+	    public static bool HasKey<K, V>(
+	        global::System.Collections.Generic.IReadOnlyDictionary<K,V> _this,
+	        K key)
+	    {
+	        return _this.ContainsKey(key);
+	    }
+
+	    // void Split(out IReadOnlyDictionary<K, V> first, out IReadOnlyDictionary<K, V> second)
+	    public static void Split<K, V>(global::System.Collections.Generic.IReadOnlyDictionary<K, V> _this,
+	        out global::System.Collections.Generic.IReadOnlyDictionary<K, V> first,
+	        out global::System.Collections.Generic.IReadOnlyDictionary<K, V> second)
+	    {
+	        if (_this.Count < 2)
+	        {
+	            first = null;
+	            second = null;
+	            return;
+	        }
+
+	        ConstantSplittableMap<K, V> splittableMap = _this as ConstantSplittableMap<K, V>;
+
+	        if (splittableMap == null)
+	            splittableMap = new ConstantSplittableMap<K, V>(_this);
+
+	        splittableMap.Split(out first, out second);
+	    }
+	}
+
+	// Note: One day we may make these return IReadOnlyCollection<T>
+	public sealed class ReadOnlyDictionaryKeyCollection<TKey, TValue> : global::System.Collections.Generic.IEnumerable<TKey>
+	{
+	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
+
+	    public ReadOnlyDictionaryKeyCollection(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
+	    {
+	        if (dictionary == null)
+	            throw new global::System.ArgumentNullException("dictionary"); 
+
+	        this.dictionary = dictionary;
+	    }
+
+	    /*
+	    public void CopyTo(TKey[] array, int index)
+	    {
+	        if (array == null)
+	            throw global::__Interop.Helpers.NewException_ArgumentNullException_array();
+	        if (index < 0)
+	            throw global::__Interop.Helpers.NewException_ArgumentOutOfRangeException_index();
+	        if (array.Length <= index && this.Count > 0)
+	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_IndexOutOfArrayBounds));
+	        if (array.Length - index < dictionary.Count)
+	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_InsufficientSpaceToCopyCollection));
+
+	        int i = index;
+	        foreach (KeyValuePair<TKey, TValue> mapping in dictionary)
+	        {
+	            array[i++] = mapping.Key;
+	        }
+	    }
+	        
+	    public int Count {
+	        get { return dictionary.Count; }
+	    }
+
+	    public bool Contains(TKey item)
+	    {
+	        return dictionary.ContainsKey(item);
+	    }
+	    */
+
+	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
+	    {
+	        return ((System.Collections.Generic.IEnumerable<TKey>)this).GetEnumerator();
+	    }
+
+	    public global::System.Collections.Generic.IEnumerator<TKey> GetEnumerator()
+	    {
+	        return new ReadOnlyDictionaryKeyEnumerator<TKey, TValue>(dictionary);
+	    }
+	}  // public class ReadOnlyDictionaryKeyCollection<TKey, TValue>
+
+
+	internal sealed class ReadOnlyDictionaryKeyEnumerator<TKey, TValue> : global::System.Collections.Generic.IEnumerator<TKey>
+	{
+	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
+	    private global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> enumeration;
+
+	    public ReadOnlyDictionaryKeyEnumerator(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
+	    {
+	        if (dictionary == null)
+	            throw new global::System.ArgumentNullException("dictionary"); 
+
+	        this.dictionary = dictionary;
+	        this.enumeration = dictionary.GetEnumerator();
+	    }
+
+	    void global::System.IDisposable.Dispose()
+	    {
+	        enumeration.Dispose();
+	    }
+
+	    public bool MoveNext()
+	    {
+	        return enumeration.MoveNext();
+	    }
+
+	    global::System.Object global::System.Collections.IEnumerator.Current
+	    {
+	        get { return ((System.Collections.Generic.IEnumerator<TKey>)this).Current; }
+	    }
+
+	    public TKey Current
+	    {
+	        get { return enumeration.Current.Key; }
+	    }
+
+	    public void Reset()
+	    {
+	        enumeration = dictionary.GetEnumerator();
+	    }
+	}  // class ReadOnlyDictionaryKeyEnumerator<TKey, TValue>
+
+
+	internal sealed class ReadOnlyDictionaryValueCollection<TKey, TValue> : global::System.Collections.Generic.IEnumerable<TValue>
+	{
+	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
+
+	    public ReadOnlyDictionaryValueCollection(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
+	    {
+	        if (dictionary == null)
+	            throw new global::System.ArgumentNullException("dictionary"); 
+
+	        this.dictionary = dictionary;
+	    }
+
+	    /*
+	    public void CopyTo(TValue[] array, int index)
+	    {
+	        if (array == null)
+	            throw global::__Interop.Helpers.NewException_ArgumentNullException_array();
+	        if (index < 0)
+	            throw global::__Interop.Helpers.NewException_ArgumentOutOfRangeException_index();
+	        if (array.Length <= index && this.Count > 0)
+	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_IndexOutOfArrayBounds));
+	        if (array.Length - index < dictionary.Count)
+	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_InsufficientSpaceToCopyCollection));
+
+	        int i = index;
+	        foreach (KeyValuePair<TKey, TValue> mapping in dictionary)
+	        {
+	            array[i++] = mapping.Value;
+	        }
+	    }
+
+	    public int Count {
+	        get { return dictionary.Count; }
+	    }
+
+	    public bool Contains(TValue item)
+	    {
+	        EqualityComparer<TValue> comparer = EqualityComparer<TValue>.Default;
+	        foreach (TValue value in this)
+	            if (comparer.Equals(item, value))
+	                return true;
+	        return false;
+	    }
+	    */
+
+	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
+	    {
+	        return ((System.Collections.Generic.IEnumerable<TValue>)this).GetEnumerator();
+	    }
+
+	    public global::System.Collections.Generic.IEnumerator<TValue> GetEnumerator()
+	    {
+	        return new ReadOnlyDictionaryValueEnumerator<TKey, TValue>(dictionary);
+	    }
+	}  // public class ReadOnlyDictionaryValueCollection<TKey, TValue>
+
+
+	internal sealed class ReadOnlyDictionaryValueEnumerator<TKey, TValue> : global::System.Collections.Generic.IEnumerator<TValue>
+	{
+	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
+	    private global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> enumeration;
+
+	    public ReadOnlyDictionaryValueEnumerator(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
+	    {
+	        if (dictionary == null)
+	            throw new global::System.ArgumentNullException("dictionary");
+
+	        this.dictionary = dictionary;
+	        this.enumeration = dictionary.GetEnumerator();
+	    }
+
+	    void global::System.IDisposable.Dispose()
+	    {
+	        enumeration.Dispose();
+	    }
+
+	    public bool MoveNext()
+	    {
+	        return enumeration.MoveNext();
+	    }
+
+	    global::System.Object global::System.Collections.IEnumerator.Current
+	    {
+	        get { return ((System.Collections.Generic.IEnumerator<TValue>)this).Current; }
+	    }
+
+	    public TValue Current
+	    {
+	        get { return enumeration.Current.Value; }
+	    }
+
+	    public void Reset()
+	    {
+	        enumeration = dictionary.GetEnumerator();
+	    }
+	}  // class ReadOnlyDictionaryValueEnumerator<TKey, TValue>
+
+
+	internal sealed class ConstantSplittableMap<TKey, TValue> : global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>, global::System.Collections.Generic.IComparer<System.Collections.Generic.KeyValuePair<TKey, TValue>>
+	{
+	    // Comparing key only
+	    public int Compare(global::System.Collections.Generic.KeyValuePair<TKey, TValue> x, global::System.Collections.Generic.KeyValuePair<TKey, TValue> y)
+	    {
+	        return global::System.Collections.Generic.Comparer<TKey>.Default.Compare(x.Key, y.Key);
+	    }
+
+	    private readonly global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] items;
+	    private readonly int firstItemIndex;
+	    private readonly int lastItemIndex;
+
+	    internal ConstantSplittableMap(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> data)
+	    {
+	        if (data == null)
+	            throw new global::System.ArgumentNullException("data");
+
+	        int count = data.Count;
+
+	        this.lastItemIndex = count - 1;
+
+	        items = new global::System.Collections.Generic.KeyValuePair<TKey, TValue>[count];
+
+	        int i = 0;
+
+	        foreach (global::System.Collections.Generic.KeyValuePair<TKey, TValue> kv in data)
+	        {
+	            items[i++] = kv;
+	        }
+
+	        global::System.Array.Sort(items, 0, items.Length, this);
+	    }
+
+	    private ConstantSplittableMap(global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] items, global::System.Int32 firstItemIndex, global::System.Int32 lastItemIndex)
+	    {
+	        this.items = items;
+	        this.firstItemIndex = firstItemIndex;
+	        this.lastItemIndex = lastItemIndex;
+	    }
+	    
+	    public int Count
+	    {
+	        get
+	        {
+	            return lastItemIndex - firstItemIndex + 1;
+	        }
+	    }
+	    
+	    // [CLSCompliant(false)]
+	    public uint Size
+	    {
+	        get
+	        {
+	            return (System.UInt32)(lastItemIndex - firstItemIndex + 1);
+	        }
+	    }
+	    
+	    public TValue Lookup(TKey key)
+	    {
+	        int index = Find(ref key);
+
+	        if (index < 0)
+	        {
+	            global::System.Exception ex = new global::System.Collections.Generic.KeyNotFoundException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_KeyNotFound));
+	            McgMarshal.SetExceptionErrorCode(
+	                ex,
+	                global::__Interop.McgHelpers.__HResults.E_BOUNDS
+	            );
+	            throw ex;
+	        }
+
+	        return items[index].Value;
+	    }
+	    
+	    public bool HasKey(TKey key)
+	    {
+	        return Find(ref key) >= 0;
+	    }
+
+	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
+	    {
+	        return this.GetEnumerator();
+	    }
+
+	    public global::System.Collections.Generic.IEnumerator<global::System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator()
+	    {
+	        return new IKeyValuePairEnumerator(this.items, this.firstItemIndex, this.lastItemIndex);
+	    }
+
+	    public void Split(out global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> firstPartition, out global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> secondPartition)
+	    {
+	        if (Count < 2)
+	        {
+	            firstPartition = null;
+	            secondPartition = null;
+	            return;
+	        }
+
+	        int pivot = (int)(((long)firstItemIndex + (long)lastItemIndex) / (long)2);
+
+	        firstPartition = new ConstantSplittableMap<TKey, TValue>(items, firstItemIndex, pivot);
+	        secondPartition = new ConstantSplittableMap<TKey, TValue>(items, pivot + 1, lastItemIndex);
+	    }
+
+	    //#region IReadOnlyDictionary members
+
+	    int Find(ref TKey key)
+	    {
+	        global::System.Collections.Generic.KeyValuePair<TKey, TValue> searchKey = new global::System.Collections.Generic.KeyValuePair<TKey, TValue>(key, default(TValue));
+	        
+	        return global::System.Array.BinarySearch(items, firstItemIndex, Count, searchKey, this);
+	    }
+
+	    public bool ContainsKey(TKey key)
+	    {
+	        return Find(ref key) >= 0;
+	    }
+
+	    public bool TryGetValue(TKey key, out TValue value)
+	    {
+	        int index = Find(ref key);
+
+	        if (index < 0)
+	        {
+	            value = default(TValue);
+	            return false;
+	        }
+
+	        value = items[index].Value;
+	        return true;
+	    }
+
+	    public TValue this[TKey key]
+	    {
+	        get
+	        {
+	            return Lookup(key);
+	        }
+	    }
+
+	    public global::System.Collections.Generic.IEnumerable<TKey> Keys
+	    {
+	        get
+	        {
+	            // This is never called as this adapter is only called from native
+	            throw new global::System.NotSupportedException();
+	        }
+	    }
+
+	    public global::System.Collections.Generic.IEnumerable<TValue> Values
+	    {
+	        get
+	        {
+	            // This is never called as this adapter is only called from native            
+	            throw new global::System.NotSupportedException();
+	        }
+	    }
+
+	    //#endregion IReadOnlyDictionary members
+
+	    #region IKeyValuePair Enumerator
+
+	    internal class IKeyValuePairEnumerator : global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>>
+	    {
+	        private global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] _array;
+	        private int _start;
+	        private int _end;
+	        private int _current;
+
+	        internal IKeyValuePairEnumerator(System.Collections.Generic.KeyValuePair<TKey, TValue>[] items, int first, int end)
+	        {
+	            //Contract.Requires(items != null);
+	            //Contract.Requires(first >= 0);
+	            //Contract.Requires(end >= 0);
+	            //Contract.Requires(first < items.Length);
+	            //Contract.Requires(end < items.Length);
+
+	            _array = items;
+	            _start = first;
+	            _end = end;
+	            _current = _start - 1;
+	        }
+
+	        public bool MoveNext()
+	        {
+	            if (_current < _end)
+	            {
+	                _current++;
+	                return true;
+	            }
+
+	            return false;
+	        }
+
+	        public global::System.Collections.Generic.KeyValuePair<TKey, TValue> Current
+	        {
+	            get
+	            {
+	                if (_current < _start) throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_EnumNotStarted));
+	                if (_current > _end)   throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_EnumEnded));
+	                //return new CLRIKeyValuePairImpl<TKey, TValue>(ref _array[_current]);
+	                return _array[_current];
+	            }
+	        }
+
+	        object global::System.Collections.IEnumerator.Current
+	        {
+	            get
+	            {
+	                return Current;
+	            }
+	        }
+
+	        void global::System.Collections.IEnumerator.Reset()
+	        {
+	            _current = _start - 1;
+	        }
+
+	        public void Dispose()
+	        {
+	        }
+	    }
+
+	    #endregion IKeyValuePair Enumerator
+
+	}  // internal ConstantSplittableMap<TKey, TValue>
+
 	public static class IMapSharedReferenceTypesRCWAdapter 
 	{
 	    // TValue this[TKey key] { get }
@@ -1931,685 +2611,5 @@ namespace System.Runtime.InteropServices.WindowsRuntime
 	        enumeration = dictionary.GetEnumerator();
 	    }
 	}  // class DictionaryValueEnumerator<TKey, TValue>
-
-	public static class IMapView_CCWAdapter 
-	{
-	    // V Lookup(K key)
-	    public static V Lookup<K, V>(global::System.Collections.Generic.IReadOnlyDictionary<K,V> _this, K key)
-	    {
-	        try
-	        {
-	            return _this[key];
-	        }
-	        catch (global::System.Collections.Generic.KeyNotFoundException ex)
-	        {
-	            // Change error code to match what WinRT expects
-	            McgMarshal.SetExceptionErrorCode(ex, global::__Interop.McgHelpers.__HResults.E_BOUNDS);
-	            throw;
-	        }
-	    }
-
-	    // uint Size { get }
-	    public static uint get_Size<K,V>(global::System.Collections.Generic.IReadOnlyDictionary<K, V> _this)
-	    {
-	        return (uint)_this.Count;
-	    }
-
-	    // bool HasKey(K key)
-	    public static bool HasKey<K, V>(
-	        global::System.Collections.Generic.IReadOnlyDictionary<K,V> _this,
-	        K key)
-	    {
-	        return _this.ContainsKey(key);
-	    }
-
-	    // void Split(out IReadOnlyDictionary<K, V> first, out IReadOnlyDictionary<K, V> second)
-	    public static void Split<K, V>(global::System.Collections.Generic.IReadOnlyDictionary<K, V> _this,
-	        out global::System.Collections.Generic.IReadOnlyDictionary<K, V> first,
-	        out global::System.Collections.Generic.IReadOnlyDictionary<K, V> second)
-	    {
-	        if (_this.Count < 2)
-	        {
-	            first = null;
-	            second = null;
-	            return;
-	        }
-
-	        ConstantSplittableMap<K, V> splittableMap = _this as ConstantSplittableMap<K, V>;
-
-	        if (splittableMap == null)
-	            splittableMap = new ConstantSplittableMap<K, V>(_this);
-
-	        splittableMap.Split(out first, out second);
-	    }
-	}
-
-	// Note: One day we may make these return IReadOnlyCollection<T>
-	public sealed class ReadOnlyDictionaryKeyCollection<TKey, TValue> : global::System.Collections.Generic.IEnumerable<TKey>
-	{
-	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
-
-	    public ReadOnlyDictionaryKeyCollection(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
-	    {
-	        if (dictionary == null)
-	            throw new global::System.ArgumentNullException("dictionary"); 
-
-	        this.dictionary = dictionary;
-	    }
-
-	    /*
-	    public void CopyTo(TKey[] array, int index)
-	    {
-	        if (array == null)
-	            throw global::__Interop.Helpers.NewException_ArgumentNullException_array();
-	        if (index < 0)
-	            throw global::__Interop.Helpers.NewException_ArgumentOutOfRangeException_index();
-	        if (array.Length <= index && this.Count > 0)
-	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_IndexOutOfArrayBounds));
-	        if (array.Length - index < dictionary.Count)
-	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_InsufficientSpaceToCopyCollection));
-
-	        int i = index;
-	        foreach (KeyValuePair<TKey, TValue> mapping in dictionary)
-	        {
-	            array[i++] = mapping.Key;
-	        }
-	    }
-	        
-	    public int Count {
-	        get { return dictionary.Count; }
-	    }
-
-	    public bool Contains(TKey item)
-	    {
-	        return dictionary.ContainsKey(item);
-	    }
-	    */
-
-	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
-	    {
-	        return ((System.Collections.Generic.IEnumerable<TKey>)this).GetEnumerator();
-	    }
-
-	    public global::System.Collections.Generic.IEnumerator<TKey> GetEnumerator()
-	    {
-	        return new ReadOnlyDictionaryKeyEnumerator<TKey, TValue>(dictionary);
-	    }
-	}  // public class ReadOnlyDictionaryKeyCollection<TKey, TValue>
-
-
-	internal sealed class ReadOnlyDictionaryKeyEnumerator<TKey, TValue> : global::System.Collections.Generic.IEnumerator<TKey>
-	{
-	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
-	    private global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> enumeration;
-
-	    public ReadOnlyDictionaryKeyEnumerator(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
-	    {
-	        if (dictionary == null)
-	            throw new global::System.ArgumentNullException("dictionary"); 
-
-	        this.dictionary = dictionary;
-	        this.enumeration = dictionary.GetEnumerator();
-	    }
-
-	    void global::System.IDisposable.Dispose()
-	    {
-	        enumeration.Dispose();
-	    }
-
-	    public bool MoveNext()
-	    {
-	        return enumeration.MoveNext();
-	    }
-
-	    global::System.Object global::System.Collections.IEnumerator.Current
-	    {
-	        get { return ((System.Collections.Generic.IEnumerator<TKey>)this).Current; }
-	    }
-
-	    public TKey Current
-	    {
-	        get { return enumeration.Current.Key; }
-	    }
-
-	    public void Reset()
-	    {
-	        enumeration = dictionary.GetEnumerator();
-	    }
-	}  // class ReadOnlyDictionaryKeyEnumerator<TKey, TValue>
-
-
-	internal sealed class ReadOnlyDictionaryValueCollection<TKey, TValue> : global::System.Collections.Generic.IEnumerable<TValue>
-	{
-	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
-
-	    public ReadOnlyDictionaryValueCollection(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
-	    {
-	        if (dictionary == null)
-	            throw new global::System.ArgumentNullException("dictionary"); 
-
-	        this.dictionary = dictionary;
-	    }
-
-	    /*
-	    public void CopyTo(TValue[] array, int index)
-	    {
-	        if (array == null)
-	            throw global::__Interop.Helpers.NewException_ArgumentNullException_array();
-	        if (index < 0)
-	            throw global::__Interop.Helpers.NewException_ArgumentOutOfRangeException_index();
-	        if (array.Length <= index && this.Count > 0)
-	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_IndexOutOfArrayBounds));
-	        if (array.Length - index < dictionary.Count)
-	            throw new ArgumentException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_InsufficientSpaceToCopyCollection));
-
-	        int i = index;
-	        foreach (KeyValuePair<TKey, TValue> mapping in dictionary)
-	        {
-	            array[i++] = mapping.Value;
-	        }
-	    }
-
-	    public int Count {
-	        get { return dictionary.Count; }
-	    }
-
-	    public bool Contains(TValue item)
-	    {
-	        EqualityComparer<TValue> comparer = EqualityComparer<TValue>.Default;
-	        foreach (TValue value in this)
-	            if (comparer.Equals(item, value))
-	                return true;
-	        return false;
-	    }
-	    */
-
-	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
-	    {
-	        return ((System.Collections.Generic.IEnumerable<TValue>)this).GetEnumerator();
-	    }
-
-	    public global::System.Collections.Generic.IEnumerator<TValue> GetEnumerator()
-	    {
-	        return new ReadOnlyDictionaryValueEnumerator<TKey, TValue>(dictionary);
-	    }
-	}  // public class ReadOnlyDictionaryValueCollection<TKey, TValue>
-
-
-	internal sealed class ReadOnlyDictionaryValueEnumerator<TKey, TValue> : global::System.Collections.Generic.IEnumerator<TValue>
-	{
-	    private readonly global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary;
-	    private global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> enumeration;
-
-	    public ReadOnlyDictionaryValueEnumerator(System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> dictionary)
-	    {
-	        if (dictionary == null)
-	            throw new global::System.ArgumentNullException("dictionary");
-
-	        this.dictionary = dictionary;
-	        this.enumeration = dictionary.GetEnumerator();
-	    }
-
-	    void global::System.IDisposable.Dispose()
-	    {
-	        enumeration.Dispose();
-	    }
-
-	    public bool MoveNext()
-	    {
-	        return enumeration.MoveNext();
-	    }
-
-	    global::System.Object global::System.Collections.IEnumerator.Current
-	    {
-	        get { return ((System.Collections.Generic.IEnumerator<TValue>)this).Current; }
-	    }
-
-	    public TValue Current
-	    {
-	        get { return enumeration.Current.Value; }
-	    }
-
-	    public void Reset()
-	    {
-	        enumeration = dictionary.GetEnumerator();
-	    }
-	}  // class ReadOnlyDictionaryValueEnumerator<TKey, TValue>
-
-
-	internal sealed class ConstantSplittableMap<TKey, TValue> : global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>, global::System.Collections.Generic.IComparer<System.Collections.Generic.KeyValuePair<TKey, TValue>>
-	{
-	    // Comparing key only
-	    public int Compare(global::System.Collections.Generic.KeyValuePair<TKey, TValue> x, global::System.Collections.Generic.KeyValuePair<TKey, TValue> y)
-	    {
-	        return global::System.Collections.Generic.Comparer<TKey>.Default.Compare(x.Key, y.Key);
-	    }
-
-	    private readonly global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] items;
-	    private readonly int firstItemIndex;
-	    private readonly int lastItemIndex;
-
-	    internal ConstantSplittableMap(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> data)
-	    {
-	        if (data == null)
-	            throw new global::System.ArgumentNullException("data");
-
-	        int count = data.Count;
-
-	        this.lastItemIndex = count - 1;
-
-	        items = new global::System.Collections.Generic.KeyValuePair<TKey, TValue>[count];
-
-	        int i = 0;
-
-	        foreach (global::System.Collections.Generic.KeyValuePair<TKey, TValue> kv in data)
-	        {
-	            items[i++] = kv;
-	        }
-
-	        global::System.Array.Sort(items, 0, items.Length, this);
-	    }
-
-	    private ConstantSplittableMap(global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] items, global::System.Int32 firstItemIndex, global::System.Int32 lastItemIndex)
-	    {
-	        this.items = items;
-	        this.firstItemIndex = firstItemIndex;
-	        this.lastItemIndex = lastItemIndex;
-	    }
-	    
-	    public int Count
-	    {
-	        get
-	        {
-	            return lastItemIndex - firstItemIndex + 1;
-	        }
-	    }
-	    
-	    // [CLSCompliant(false)]
-	    public uint Size
-	    {
-	        get
-	        {
-	            return (System.UInt32)(lastItemIndex - firstItemIndex + 1);
-	        }
-	    }
-	    
-	    public TValue Lookup(TKey key)
-	    {
-	        int index = Find(ref key);
-
-	        if (index < 0)
-	        {
-	            global::System.Exception ex = new global::System.Collections.Generic.KeyNotFoundException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_KeyNotFound));
-	            McgMarshal.SetExceptionErrorCode(
-	                ex,
-	                global::__Interop.McgHelpers.__HResults.E_BOUNDS
-	            );
-	            throw ex;
-	        }
-
-	        return items[index].Value;
-	    }
-	    
-	    public bool HasKey(TKey key)
-	    {
-	        return Find(ref key) >= 0;
-	    }
-
-	    global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()
-	    {
-	        return this.GetEnumerator();
-	    }
-
-	    public global::System.Collections.Generic.IEnumerator<global::System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator()
-	    {
-	        return new IKeyValuePairEnumerator(this.items, this.firstItemIndex, this.lastItemIndex);
-	    }
-
-	    public void Split(out global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> firstPartition, out global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> secondPartition)
-	    {
-	        if (Count < 2)
-	        {
-	            firstPartition = null;
-	            secondPartition = null;
-	            return;
-	        }
-
-	        int pivot = (int)(((long)firstItemIndex + (long)lastItemIndex) / (long)2);
-
-	        firstPartition = new ConstantSplittableMap<TKey, TValue>(items, firstItemIndex, pivot);
-	        secondPartition = new ConstantSplittableMap<TKey, TValue>(items, pivot + 1, lastItemIndex);
-	    }
-
-	    //#region IReadOnlyDictionary members
-
-	    int Find(ref TKey key)
-	    {
-	        global::System.Collections.Generic.KeyValuePair<TKey, TValue> searchKey = new global::System.Collections.Generic.KeyValuePair<TKey, TValue>(key, default(TValue));
-	        
-	        return global::System.Array.BinarySearch(items, firstItemIndex, Count, searchKey, this);
-	    }
-
-	    public bool ContainsKey(TKey key)
-	    {
-	        return Find(ref key) >= 0;
-	    }
-
-	    public bool TryGetValue(TKey key, out TValue value)
-	    {
-	        int index = Find(ref key);
-
-	        if (index < 0)
-	        {
-	            value = default(TValue);
-	            return false;
-	        }
-
-	        value = items[index].Value;
-	        return true;
-	    }
-
-	    public TValue this[TKey key]
-	    {
-	        get
-	        {
-	            return Lookup(key);
-	        }
-	    }
-
-	    public global::System.Collections.Generic.IEnumerable<TKey> Keys
-	    {
-	        get
-	        {
-	            // This is never called as this adapter is only called from native
-	            throw new global::System.NotSupportedException();
-	        }
-	    }
-
-	    public global::System.Collections.Generic.IEnumerable<TValue> Values
-	    {
-	        get
-	        {
-	            // This is never called as this adapter is only called from native            
-	            throw new global::System.NotSupportedException();
-	        }
-	    }
-
-	    //#endregion IReadOnlyDictionary members
-
-	    #region IKeyValuePair Enumerator
-
-	    internal class IKeyValuePairEnumerator : global::System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>>
-	    {
-	        private global::System.Collections.Generic.KeyValuePair<TKey, TValue>[] _array;
-	        private int _start;
-	        private int _end;
-	        private int _current;
-
-	        internal IKeyValuePairEnumerator(System.Collections.Generic.KeyValuePair<TKey, TValue>[] items, int first, int end)
-	        {
-	            //Contract.Requires(items != null);
-	            //Contract.Requires(first >= 0);
-	            //Contract.Requires(end >= 0);
-	            //Contract.Requires(first < items.Length);
-	            //Contract.Requires(end < items.Length);
-
-	            _array = items;
-	            _start = first;
-	            _end = end;
-	            _current = _start - 1;
-	        }
-
-	        public bool MoveNext()
-	        {
-	            if (_current < _end)
-	            {
-	                _current++;
-	                return true;
-	            }
-
-	            return false;
-	        }
-
-	        public global::System.Collections.Generic.KeyValuePair<TKey, TValue> Current
-	        {
-	            get
-	            {
-	                if (_current < _start) throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_EnumNotStarted));
-	                if (_current > _end)   throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_EnumEnded));
-	                //return new CLRIKeyValuePairImpl<TKey, TValue>(ref _array[_current]);
-	                return _array[_current];
-	            }
-	        }
-
-	        object global::System.Collections.IEnumerator.Current
-	        {
-	            get
-	            {
-	                return Current;
-	            }
-	        }
-
-	        void global::System.Collections.IEnumerator.Reset()
-	        {
-	            _current = _start - 1;
-	        }
-
-	        public void Dispose()
-	        {
-	        }
-	    }
-
-	    #endregion IKeyValuePair Enumerator
-
-	}  // internal ConstantSplittableMap<TKey, TValue>
-
-	public static class IMapViewSharedReferenceTypesRCWAdapter 
-	{
-	    // int Count { get }
-	    public static int Count_Get<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this)
-	    {
-	        uint size = IMapViewSharedReferenceTypesStubClass.get_Size(_this);
-
-	        if (((uint)System.Int32.MaxValue) < size)
-	        {
-	            throw new InvalidOperationException(global::Mcg.System.SR.GetString(global::Mcg.System.SR.Excep_CollectionBackingListTooLarge));
-	        }
-
-	        return (int)size;
-	    }
-
-	    // TValue this[K key] { get }
-	    public static TValue Indexer_Get<TKey, TValue>(
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
-	        TKey key)
-	    {
-	        if ((object)key == null)
-	            throw new global::System.ArgumentNullException("key");
-
-
-	        return Lookup(_this, key);
-	    }
-
-	    // IEnumerable<TKey> Keys { get }
-	    public static global::System.Collections.Generic.IEnumerable<TKey> Keys<TKey, TValue>(
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this
-	        )
-	    {
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> roDictionary = (System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>)_this;
-	        return new global::System.Runtime.InteropServices.WindowsRuntime.ReadOnlyDictionaryKeyCollection<TKey, TValue>(roDictionary);
-	    }
-
-	    // IEnumerable<TValue> Values { get }
-	    public static global::System.Collections.Generic.IEnumerable<TValue> Values<TKey, TValue>(
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this
-	        )
-	    {
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> roDictionary = (System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>)_this;
-	        return new global::System.Runtime.InteropServices.WindowsRuntime.ReadOnlyDictionaryValueCollection<TKey, TValue>(roDictionary);
-	    }
-
-	    // bool ContainsKey(K key)
-	    public static bool ContainsKey<TKey, TValue>(
-	       global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
-	        TKey key)
-	    {
-	        if ((object)key == null)
-	            throw new global::System.ArgumentNullException("key");
-
-	        return IMapViewSharedReferenceTypesStubClass.HasKey(_this, key);
-	    }
-
-	    // bool TryGetValue(TKey key, out TValue value)
-	    public static bool TryGetValue<TKey, TValue>(
-	        global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
-	        TKey key, 
-	        out TValue value)
-	    {
-	        if ((object)key == null)
-	            throw new global::System.ArgumentNullException("key");
-
-	        // It may be faster to call HasKey then Lookup.  On failure, we would otherwise
-	        // throw an exception from Lookup.
-	        if (!IMapViewSharedReferenceTypesStubClass.HasKey(_this, key))
-	        {
-	            value = default(TValue);
-	            return false;
-	        }
-
-	        try
-	        {
-	            value = IMapViewSharedReferenceTypesStubClass.Lookup(_this, key);
-	            return true;
-	        }
-	        catch (System.Exception ex)  // Still may hit this case due to a race, or a potential bug.
-	        {
-	            if (global::__Interop.McgHelpers.__HResults.E_BOUNDS == ex.HResult)
-	            {
-	                value = default(TValue);
-	                return false;
-	            }
-	            throw;
-	        }
-	    }
-
-	    #region Helpers
-
-	    private static TValue Lookup<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this, TKey key)
-	    {
-	        //Contract.Requires(null != key);
-
-	        try
-	        {
-	            return IMapViewSharedReferenceTypesStubClass.Lookup(_this, key);
-	        }
-	        catch (System.Exception ex)
-	        {
-	            if (global::__Interop.McgHelpers.__HResults.E_BOUNDS == ex.HResult)
-	                throw new global::System.Collections.Generic.KeyNotFoundException("key");
-	            throw;
-	        }
-	    }
-
-	    #endregion Helpers
-	}
-
-	public static unsafe class IMapViewSharedReferenceTypesStubClass
-	{
-	    internal const int idx_Lookup = 6;
-	    internal const int idx_get_Size = 7;
-	    internal const int idx_HasKey = 8;
-
-	    [global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-	    public static TValue Lookup<TKey, TValue>(
-	                global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
-	                TKey key)
-	    {
-	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
-	            (global::System.__ComObject)_this,
-	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
-	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_Lookup];
-	        global::System.IntPtr unsafeKey = global::System.IntPtr.Zero;
-	        global::System.IntPtr unsafeValue = global::System.IntPtr.Zero;
-
-	        try
-	        {
-	            unsafeKey = global::System.Runtime.InteropServices.McgMarshal.ObjectToComInterface(key, typeof(TKey).TypeHandle);
-	            int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)unsafeKey, (void*)&unsafeValue);
-	            global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
-	            global::System.GC.KeepAlive(_this);
-
-	            if (result < 0)
-	            {
-	                throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
-	            }
-
-	            return (TValue)global::System.Runtime.InteropServices.McgMarshal.ComInterfaceToObject(unsafeValue, typeof(TValue).TypeHandle);
-	        }
-	        finally
-	        {
-	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TKey>(unsafeKey);
-	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TValue>(unsafeValue);
-	        }
-	    }
-
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-	    public static uint get_Size<TKey, TValue>(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this)
-	    {
-	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
-	            (global::System.__ComObject)_this,
-	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
-	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_get_Size];
-	        uint unsafeSize;
-
-	        int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)&unsafeSize);
-	        global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
-	        global::System.GC.KeepAlive(_this);
-
-	        if (result < 0)
-	        {
-	            throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
-	        }
-
-	        return unsafeSize;
-	    }
-
-		[global::System.Runtime.InteropServices.McgGeneratedMarshallingCode]
-	    public static bool HasKey<TKey, TValue>(
-	                global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue> _this,
-	                TKey key)
-	    {
-	        global::System.IntPtr unsafeThis = global::System.Runtime.InteropServices.McgMarshal.GetInterface(
-	            (global::System.__ComObject)_this,
-	            typeof(global::System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>).TypeHandle);
-	        global::System.IntPtr target = (*((global::System.IntPtr**)unsafeThis))[idx_HasKey];
-	        global::System.IntPtr unsafeKey = global::System.IntPtr.Zero;
-	        bool retVal;
-	        sbyte unsafeRetVal;
-
-	        try
-	        {
-	            unsafeKey = global::System.Runtime.InteropServices.McgMarshal.ObjectToComInterface(key, typeof(TKey).TypeHandle);
-	            int result = Intrinsics.StdCall__int__(target, (void*)unsafeThis, (void*)unsafeKey, (void*)&unsafeRetVal);
-	            global::System.Diagnostics.DebugAnnotations.PreviousCallContainsDebuggerStepInCode();
-	            global::System.GC.KeepAlive(_this);
-
-	            if (result < 0)
-	            {
-	                throw global::System.Runtime.InteropServices.McgMarshal.GetExceptionForHR(result, /* isWinRTScenario = */ true);
-	            }
-
-	            retVal = unsafeRetVal != 0;
-	        }
-	        finally
-	        {
-	            global::System.Runtime.InteropServices.McgMarshal.CleanupNative<TKey>(unsafeKey);
-	        }
-
-	        return retVal;
-	    }
-
-	}
 }
 

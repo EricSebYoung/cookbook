@@ -14,8 +14,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="{Binding recipeImage}"
-                    HorizontalOptions="CenterAndExpand" />
+                <Image
+                    HorizontalOptions="CenterAndExpand" x:Name="RecipeImage"/>
                 <Label Text="Ingredients" FontAttributes="Bold" TextDecorations="Underline"/>
                 <StackLayout x:Name="Ingredients">
                     <!-- Defined Dynamically in code behind -->

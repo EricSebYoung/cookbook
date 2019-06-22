@@ -7,7 +7,7 @@ namespace CookBookApp
         [PrimaryKey, AutoIncrement]
         public int categoryId { get; set; }
         public string categoryName { get; set; }
-        public string categoryImage { get; set; }
+        public byte[] categoryImage { get; set; }
     }
 
     public class Recipes
@@ -17,7 +17,7 @@ namespace CookBookApp
         public string recipeName { get; set; }
         public int categoryId { get; set; }
         public string recipeDirections { get; set; }
-        public string recipeImage { get; set; }
+        public byte[] recipeImage { get; set; }
     }
 
     public class Ingredients
