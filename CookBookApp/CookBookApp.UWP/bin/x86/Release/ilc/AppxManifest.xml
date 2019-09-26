@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="62c5297c-ac54-4486-9646-2da86e799b66" Publisher="CN=erics" Version="0.0.2.0" ProcessorArchitecture="x86" />
+  <Identity Name="62c5297c-ac54-4486-9646-2da86e799b66" Publisher="CN=erics" Version="0.0.3.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>CookBookApp.UWP</DisplayName>
@@ -149,7 +149,7 @@
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="15.0" />
     <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2017" />
-    <build:Item Name="OperatingSystem" Version="10.0.17134.1 (WinBuild.160101.0800)" />
+    <build:Item Name="OperatingSystem" Version="10.0.18362.1 (WinBuild.160101.0800)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="15.0.28307.104" />
     <build:Item Name="ProjectGUID" Value="{721B7A8E-2B6D-4DDD-8903-865B0198E3B2}" />
     <build:Item Name="ilc.exe" Version="2.2.27420.00 built by: PROJECTNREL" />
